@@ -18,6 +18,7 @@ npm install
 ```bash
 npm run dev
 ```
+
 Then open the URL shown in the terminal (defaults to http://localhost:4321).
 
 4. Build for production

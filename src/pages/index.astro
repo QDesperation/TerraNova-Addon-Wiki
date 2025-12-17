@@ -1,21 +1,57 @@
 ---
-import Layout from '../layout/main.astro';
-import Navbar from '../components/Navbar.astro';
+import Layout from "../layout/main.astro";
+import Navbar from "../components/Navbar.astro";
 ---
 
-<Layout content={{ title: 'Home - TerraNova: Minecraft Addon Wiki', description: 'Welcome to the TerraNova: Minecraft Addon Wiki' }}>
+<Layout
+  content={{
+    title: "Home - TerraNova: Minecraft Addon Wiki",
+    description: "Welcome to the TerraNova: Minecraft Addon Wiki",
+  }}
+>
   <Navbar />
-  <header id="hero" class="w-full flex md:items-center md:justify-center">
-	<div class="mx-auto px-4 py-12 max-w-full text-center flex flex-col md:items-center md:justify-center">
-	  <img src="/title.png" alt="TerraNova Logo" class="w-full h-auto max-w-6xl" />
-	  <div class="w-full bg-[#212121]/60 py-6 mt-8 md:hidden">
-	    <p class="text-white italic font-bold text-lg max-w-2xl mx-auto block md:hidden drop-shadow-lg px-4">"Terra is a sprawling world of magic and mystery, home to fantastical races, magical beasts, and diverse landscapes that invite endless exploration and discovery!"</p>
-	  </div>
-	</div>
+  <header id="hero" class="flex w-full md:items-center md:justify-center">
+    <div
+      class="mx-auto flex max-w-full flex-col px-4 py-12 text-center md:items-center md:justify-center"
+    >
+      <img
+        src="/title.png"
+        alt="TerraNova Logo"
+        class="h-auto w-full max-w-6xl"
+      />
+      <div class="mt-8 w-full bg-[#212121]/60 py-6 md:hidden">
+        <p
+          class="mx-auto block max-w-2xl px-4 text-lg font-bold text-white italic drop-shadow-lg md:hidden"
+        >
+          "Terra is a sprawling world of magic and mystery, home to fantastical
+          races, magical beasts, and diverse landscapes that invite endless
+          exploration and discovery!"
+        </p>
+      </div>
+    </div>
   </header>
-  <main class="max-w-3xl mx-auto px-4 py-8">
-	<h2 class="text-3xl font-bold mb-4">Welcome to the TerraNova: Minecraft Addon Wiki</h2>
-	<p class="mb-4">This wiki is dedicated to providing comprehensive information about Minecraft addons, including mods, resource packs, and data packs. Whether you're a developer looking to create your own addons or a player seeking to enhance your Minecraft experience, you'll find valuable resources here.</p>
-	
-	</main>
+  <main class="mx-auto max-w-3xl px-4 py-8">
+    <h2 class="mb-4 text-3xl font-bold">
+      Welcome to the TerraNova: Minecraft Addon Wiki
+    </h2>
+    <p class="mb-4">
+      This wiki is dedicated to providing comprehensive information about the
+      TerraNova Minecraft addon. Here, you will find detailed documentation,
+      guides, and resources to help you navigate and make the most of the
+      TerraNova addon.
+    </p>
+    <h3 class="mb-3 text-2xl font-semibold">Getting Started</h3>
+    <p class="mb-4">
+      If you're new to TerraNova, we recommend starting with our <a
+        href="/getting-started"
+        class="text-blue-500 underline">Getting Started guide</a
+      >. This guide will walk you through the basics of installing and using the
+      addon.
+    </p>
+    <h3 class="mb-3 text-2xl font-semibold">Explore the Wiki</h3>
+    <p class="mb-4">
+      Browse through our various sections to learn more about the features and
+      content of TerraNova:
+    </p>
+  </main>
 </Layout>
