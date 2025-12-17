@@ -1,0 +1,19 @@
+---
+import '../styles/global.css';
+const { content } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<title>{content.title}</title>
+		<meta name="description" content={content.description} />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="color" content="#D1CEA1" />
+	</head>
+	<body class="light bg-[#F5EEDD] merriweather-regular text-[#212121] min-h-screen">
+		<slot />
+	</body>
+</html>

@@ -1,16 +1,21 @@
 ---
-
+import Layout from '../layout/main.astro';
+import Navbar from '../components/Navbar.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout content={{ title: 'Home - TerraNova: Minecraft Addon Wiki', description: 'Welcome to the TerraNova: Minecraft Addon Wiki' }}>
+  <Navbar />
+  <header id="hero" class="w-full flex md:items-center md:justify-center">
+	<div class="mx-auto px-4 py-12 max-w-full text-center flex flex-col md:items-center md:justify-center">
+	  <img src="/title.png" alt="TerraNova Logo" class="w-full h-auto max-w-6xl" />
+	  <div class="w-full bg-[#212121]/60 py-6 mt-8 md:hidden">
+	    <p class="text-white italic font-bold text-lg max-w-2xl mx-auto block md:hidden drop-shadow-lg px-4">"Terra is a sprawling world of magic and mystery, home to fantastical races, magical beasts, and diverse landscapes that invite endless exploration and discovery!"</p>
+	  </div>
+	</div>
+  </header>
+  <main class="max-w-3xl mx-auto px-4 py-8">
+	<h2 class="text-3xl font-bold mb-4">Welcome to the TerraNova: Minecraft Addon Wiki</h2>
+	<p class="mb-4">This wiki is dedicated to providing comprehensive information about Minecraft addons, including mods, resource packs, and data packs. Whether you're a developer looking to create your own addons or a player seeking to enhance your Minecraft experience, you'll find valuable resources here.</p>
+	
+	</main>
+</Layout>
