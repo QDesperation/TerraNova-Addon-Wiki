@@ -1,0 +1,113 @@
+---
+import Layout from "../../layout/main.astro";
+import Navbar from "../../components/Navbar.astro";
+import mobsImage from "../../assets/mobsImage.png";
+import { Image } from "astro:assets";
+import Footer from "../../components/Footer.astro";
+---
+
+<Layout
+  content={{
+    title: "Mobs - TerraNova: Minecraft Addon Wiki",
+    description:
+      "Learn about the various mobs in the TerraNova Minecraft addon.",
+  }}
+>
+  <Navbar />
+  <main class="mx-auto max-w-5xl px-4 py-8">
+    <div class="flex flex-col gap-8 md:flex-row md:items-start">
+      <div
+        class="order-1 flex-1 self-center md:order-2 md:max-w-sm md:self-start lg:max-w-md"
+      >
+        <a href={mobsImage.src} target="_blank" rel="noopener noreferrer">
+          <Image
+            src={mobsImage}
+            alt="Various Mobs in TerraNova"
+            class="h-auto w-full"
+            loading={"lazy"}
+          />
+        </a>
+      </div>
+      <div class="order-2 flex-1 md:order-1">
+        <h1 class="mb-6 text-4xl font-bold">Mobs in TerraNova</h1>
+        <p class="mb-4">
+          TerraNova introduces a variety of unique mobs that enhance the
+          gameplay experience. Below is an overview of some of the notable mobs
+          you will encounter in the addon.
+        </p>
+        <h2 class="mb-4 text-3xl font-bold">List of Mobs</h2>
+        <hr class="pt-4" />
+        <section class="space-y-6">
+          <div>
+            <h3 class="text-2xl font-semibold">Creatures</h3>
+            <div class="mt-2 space-y-2">
+              <div>
+                <h4 class="text-lg font-semibold">Passive mobs</h4>
+                <ul class="list-inside list-disc space-y-1 pl-4">
+                  <li>Doedicurus</li>
+                  <li>Silkmoth</li>
+                  <li>Silkworm</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="text-lg font-semibold">Neutral mobs</h4>
+                <ul class="list-inside list-disc space-y-1 pl-4">
+                  <li><a href="/mobs/deer" class="underline">Deer <sup>[+]</sup></a></li>
+                  <li>Direwolf</li>
+                  <li>Parasaurolophus</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="text-lg font-semibold">Hostile mobs</h4>
+                <p class="text-sm text-gray-700">Unavailable</p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-2xl font-semibold">Monsters</h3>
+            <div class="mt-2 space-y-2">
+              <div>
+                <h4 class="text-lg font-semibold">Passive mobs</h4>
+                <p class="text-sm text-gray-700">Unavailable</p>
+              </div>
+              <div>
+                <h4 class="text-lg font-semibold">Neutral mobs</h4>
+                <ul class="list-inside list-disc space-y-1 pl-4">
+                  <li>Oukelaphos</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="text-lg font-semibold">Hostile mobs</h4>
+                <ul class="list-inside list-disc space-y-1 pl-4">
+                  <li>Frosted Slime</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-2xl font-semibold">Mythosoherpeton</h3>
+            <div class="mt-2 space-y-2">
+              <div>
+                <h4 class="text-lg font-semibold">Passive mobs</h4>
+                <p class="text-sm text-gray-700">Unavailable</p>
+              </div>
+              <div>
+                <h4 class="text-lg font-semibold">Neutral mobs</h4>
+                <ul class="list-inside list-disc space-y-1">
+                  <li>Dracon</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="text-lg font-semibold">Hostile mobs</h4>
+                <p class="text-sm text-gray-700">Unavailable</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>

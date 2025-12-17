@@ -1,0 +1,83 @@
+---
+interface ImageItem {
+	src: string;
+	alt?: string;
+	caption?: string;
+}
+
+interface Props {
+	items?: ImageItem[];
+}
+
+const { items = [] } = Astro.props as Props;
+---
+
+<div class="relative">
+	<div
+		class="flex gap-3 overflow-hidden scroll-smooth snap-x snap-mandatory"
+		data-carousel-track
+	>
+		{items.map((item, idx) => (
+			<figure
+				class="min-w-full snap-center bg-black/5 rounded-md overflow-hidden"
+				aria-label={item.alt ?? `Slide ${idx + 1}`}
+			>
+				<img
+					src={item.src}
+					alt={item.alt ?? ""}
+					class="w-full h-auto object-contain"
+					loading="lazy"
+				/>
+				{item.alt && (
+					<figcaption class="px-3 py-2 text-sm text-gray-700 text-center bg-black/10">
+						{item.alt}
+					</figcaption>
+				)}
+				{item.caption && (
+					<figcaption class="px-3 py-2 text-sm text-gray-200 bg-black/60">
+						{item.caption}
+					</figcaption>
+				)}
+			</figure>
+		))}
+	</div>
+
+	<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-2">
+		<button
+			type="button"
+			class="pointer-events-auto h-9 w-9 rounded-full bg-black/60 text-white flex items-center justify-center text-lg"
+			data-carousel-prev
+			aria-label="Previous"
+		>
+			‹
+		</button>
+	</div>
+	<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+		<button
+			type="button"
+			class="pointer-events-auto h-9 w-9 rounded-full bg-black/60 text-white flex items-center justify-center text-lg"
+			data-carousel-next
+			aria-label="Next"
+		>
+			›
+		</button>
+	</div>
+</div>
+
+<script>
+	const track = document.querySelector('[data-carousel-track]');
+	const prevBtn = document.querySelector('[data-carousel-prev]');
+	const nextBtn = document.querySelector('[data-carousel-next]');
+
+	if (track && prevBtn && nextBtn) {
+		const scrollAmount = () => track.clientWidth * 0.6;
+
+		prevBtn.addEventListener('click', () => {
+			track.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
+		});
+
+		nextBtn.addEventListener('click', () => {
+			track.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
+		});
+	}
+</script>
