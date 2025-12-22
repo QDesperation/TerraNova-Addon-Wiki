@@ -4,6 +4,8 @@ import Navbar from "../../components/Navbar.astro";
 import mobsImage from "../../assets/mobsImage.png";
 import { Image } from "astro:assets";
 import Footer from "../../components/Footer.astro";
+
+const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <Layout
@@ -52,7 +54,7 @@ import Footer from "../../components/Footer.astro";
               <div>
                 <h4 class="text-lg font-semibold">Neutral mobs</h4>
                 <ul class="list-inside list-disc space-y-1 pl-4">
-                  <li><a href="/mobs/deer" class="underline">Deer <sup>[+]</sup></a></li>
+                  <li><a href={`${baseUrl}mobs/deer`} class="underline">Deer <sup>[+]</sup></a></li>
                   <li>Direwolf</li>
                   <li>Parasaurolophus</li>
                 </ul>
