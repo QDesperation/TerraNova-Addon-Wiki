@@ -18,7 +18,7 @@ const { content } = Astro.props;
     <meta name="og:description" content={content.description} />
     <meta name="og:type" content="website" />
     <meta name="og:image" content={baseUrl + "/icon.png"} />
-    <style define:vars={{ "base-url": `"${baseUrl}"` }} />
+    <style define:vars={{ "base-url": `"${baseUrl}/"` }} />
   </head>
   <body
     class="light merriweather-regular flex min-h-screen flex-col bg-[#F5EEDD] text-[#212121]"
