@@ -1,0 +1,165 @@
+---
+const baseUrl = import.meta.env.BASE_URL;
+const currentPath = Astro.url.pathname;
+
+interface NavSection {
+  title: string;
+  items: NavItem[];
+}
+
+interface NavItem {
+  label: string;
+  href: string;
+  isSubItem?: boolean;
+}
+
+const navigation: NavSection[] = [
+  {
+    title: "Getting Started",
+    items: [
+      { label: "Home", href: `${baseUrl}` },
+      { label: "Installation", href: `${baseUrl}getting-started` },
+    ],
+  },
+  {
+    title: "Mobs",
+    items: [
+      { label: "Overview", href: `${baseUrl}mobs` },
+      { label: "Deer", href: `${baseUrl}mobs/deer`, isSubItem: true },
+    ],
+  },
+];
+
+function isActive(href: string): boolean {
+  // Remove trailing slash for comparison
+  const normalizedPath = currentPath.endsWith('/') && currentPath.length > 1 
+    ? currentPath.slice(0, -1) 
+    : currentPath;
+  const normalizedHref = href.endsWith('/') && href.length > 1
+    ? href.slice(0, -1)
+    : href;
+  return normalizedPath === normalizedHref;
+}
+---
+
+<!-- Mobile menu button -->
+<button
+  id="sidebar-toggle"
+  class="fixed left-2 top-18 z-50 rounded-sm bg-[#212121] p-2 text-white lg:hidden"
+  aria-label="Toggle sidebar"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="h-6 w-6"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M4 6h16M4 12h16M4 18h16"></path>
+  </svg>
+</button>
+
+<!-- Overlay for mobile -->
+<div
+  id="sidebar-overlay"
+  class="fixed inset-0 z-40 hidden lg:hidden"
+></div>
+
+<aside
+  id="sidebar"
+  class="fixed inset-y-0 left-0 z-50 w-full -translate-x-full transform border-r border-gray-300 bg-[#F5EEDD] p-6 transition-transform duration-300 ease-in-out lg:static lg:w-64 lg:translate-x-0"
+>
+  <!-- Close button for mobile -->
+  <button
+    id="sidebar-close"
+    class="absolute right-2 top-18 rounded-sm bg-[#212121] p-2 text-white lg:hidden"
+    aria-label="Close sidebar"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-6 w-6"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M6 18L18 6M6 6l12 12"></path>
+    </svg>
+  </button>
+  
+  <nav class="mt-16">
+    <div class="space-y-6">
+      {
+        navigation.map((section) => (
+          <div>
+            <h3 class="mb-3 text-sm font-bold uppercase tracking-wider text-gray-600">
+              {section.title}
+            </h3>
+            <ul class="space-y-2">
+              {section.items.map((item) => (
+                <li class={item.isSubItem ? "ml-4" : ""}>
+                  <a
+                    href={item.href}
+                    class:list={[
+                      "block rounded-sm px-3 py-2 text-sm transition-colors",
+                      isActive(item.href)
+                        ? "bg-[#212121] font-semibold text-white"
+                        : "text-gray-700 hover:bg-gray-200",
+                    ]}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </nav>
+</aside>
+
+<script>
+  const sidebar = document.getElementById("sidebar");
+  const sidebarToggle = document.getElementById("sidebar-toggle");
+  const sidebarClose = document.getElementById("sidebar-close");
+  const sidebarOverlay = document.getElementById("sidebar-overlay");
+  
+  // Tailwind's lg breakpoint
+  const LG_BREAKPOINT = 1024;
+
+  function toggleSidebar() {
+    if (sidebar && sidebarOverlay) {
+      const isOpen = !sidebar.classList.contains("-translate-x-full");
+      
+      if (isOpen) {
+        sidebar.classList.add("-translate-x-full");
+        sidebarOverlay.classList.add("hidden");
+      } else {
+        sidebar.classList.remove("-translate-x-full");
+        sidebarOverlay.classList.remove("hidden");
+      }
+    }
+  }
+
+  sidebarToggle?.addEventListener("click", toggleSidebar);
+  sidebarClose?.addEventListener("click", toggleSidebar);
+  sidebarOverlay?.addEventListener("click", toggleSidebar);
+
+  // Close sidebar when clicking a link on mobile
+  const sidebarLinks = sidebar?.querySelectorAll("a");
+  sidebarLinks?.forEach((link) => {
+    link.addEventListener("click", () => {
+      if (window.innerWidth < LG_BREAKPOINT) {
+        toggleSidebar();
+      }
+    });
+  });
+</script>

@@ -7,6 +7,9 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  site: 'https://qdesperation.github.io',
-  base: '/TerraNova-Addon-Wiki/'
+  site: 'https://rezn1r.github.io',
+  base: '/Kyuu/',
+  devToolbar: {
+    enabled: false
+  }
 });

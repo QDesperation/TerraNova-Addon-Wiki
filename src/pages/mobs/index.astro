@@ -1,5 +1,5 @@
 ---
-import Layout from "../../layout/main.astro";
+import WikiLayout from "../../layout/wiki.astro";
 import Navbar from "../../components/Navbar.astro";
 import mobsImage from "../../assets/mobsImage.png";
 import { Image } from "astro:assets";
@@ -8,15 +8,15 @@ import Footer from "../../components/Footer.astro";
 const baseUrl = import.meta.env.BASE_URL;
 ---
 
-<Layout
+<WikiLayout
   content={{
     title: "Mobs - TerraNova: Minecraft Addon Wiki",
     description:
       "Learn about the various mobs in the TerraNova Minecraft addon.",
   }}
 >
-  <Navbar />
-  <main class="mx-auto max-w-5xl px-4 py-8">
+  <Navbar slot="header" />
+  <div class="mx-auto max-w-5xl px-4 py-8">
     <div class="flex flex-col gap-8 md:flex-row md:items-start">
       <div
         class="order-1 flex-1 self-center md:order-2 md:max-w-sm md:self-start lg:max-w-md"
@@ -110,6 +110,6 @@ const baseUrl = import.meta.env.BASE_URL;
         </section>
       </div>
     </div>
-  </main>
-  <Footer />
-</Layout>
+  </div>
+  <Footer slot="footer" />
+</WikiLayout>

@@ -1,5 +1,5 @@
 ---
-import Layout from "../../layout/main.astro";
+import WikiLayout from "../../layout/wiki.astro";
 import Navbar from "../../components/Navbar.astro";
 import doe from "../../assets/mobs/deer/doe.png";
 import weakenedDoe from "../../assets/mobs/deer/weakenedDoe.png";
@@ -13,19 +13,19 @@ import Footer from "../../components/Footer.astro";
 const baseUrl = import.meta.env.BASE_URL;
 ---
 
-<Layout
+<WikiLayout
   content={{
     title: "Deer - TerraNova: Minecraft Addon Wiki",
     description: "Learn about the Deer mob in the TerraNova Minecraft addon.",
   }}
 >
-  <Navbar />
-  <main class="mx-auto max-w-5xl px-4 py-8">
+  <Navbar slot="header" />
+  <div class="mx-auto max-w-6xl px-4 py-8">
     <h1 class="mb-2 text-4xl font-bold">Deer</h1>
     <p class="mb-4">
       And other types of deers such as fawns and stags.
     </p>
-    <div class="max-w-lg">
+    <div class="mx-auto max-w-2xl">
       <ImageCarousel
         items={[
           {
@@ -54,7 +54,7 @@ const baseUrl = import.meta.env.BASE_URL;
     </div>
 
 
-  </main>
+  </div>
 
-  <Footer />
-</Layout>
+  <Footer slot="footer" />
+</WikiLayout>
