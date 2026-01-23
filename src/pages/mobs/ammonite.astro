@@ -1,0 +1,109 @@
+---
+import WikiLayout from "../../layout/wiki.astro";
+import Navbar from "../../components/Navbar.astro";
+import ammoniteIcon from "../../assets/mobs/ammonite/ammoniteIcon.png";
+import Footer from "../../components/Footer.astro";
+import TableOfContents from "../../components/TableOfContents.astro";
+import InfoBox from "../../components/InfoBox.astro";
+import MobIcon from "../../components/MobIcon.astro";
+
+const baseUrl = import.meta.env.BASE_URL;
+---
+
+<WikiLayout
+  content={{
+    title: "Ammonite - TerraNova: Minecraft Addon Wiki",
+    description: "Learn about the Ammonite mob in the TerraNova Minecraft addon.",
+  }}
+>
+  <Navbar slot="header" />
+  <div class="mx-auto max-w-6xl px-4 py-8">
+    <h1 class="mb-6 text-4xl font-bold">Ammonite</h1>
+    <div class="flex flex-col-reverse gap-8 md:flex-row">
+      <!-- Main Content -->
+      <div class="flex-1">
+        <p class="mb-6 text-base leading-relaxed">
+          A neutral aquatic mob found in various ocean biomes.
+        </p>
+
+        <TableOfContents
+          items={[
+            { label: "Health Points", id: "health-points" },
+            { label: "Behaviour", id: "behaviour" },
+            { label: "Mob Type", id: "mob-type" },
+            { label: "Attack Strength", id: "attack-strength" },
+            { label: "Spawn", id: "spawn" },
+            { label: "Useable Items", id: "useable-items" },
+          ]}
+        />
+        
+        <div class="mt-8">
+          <!-- Main content sections can go here -->
+        </div>
+      </div>
+
+      <!-- Sidebar with InfoBox -->
+      <div class="md:w-80">
+        <!-- Mob Icon -->
+        <MobIcon src={ammoniteIcon} alt="Ammonite Icon" />
+
+        <!-- InfoBox -->
+        <InfoBox
+          title="Ammonite"
+          sections={[
+            {
+              label: "Health Points",
+              content: ["32 (♡ × 16)"],
+            },
+            {
+              label: "Behaviour",
+              content: ["Neutral"],
+            },
+            {
+              label: "Mob Type",
+              content: [
+                '<a href="https://minecraft.wiki/w/Animal" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Animal</a>',
+                '<a href="https://minecraft.wiki/w/Aquatic" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Aquatic</a>',
+              ],
+              isHtml: true,
+            },
+            {
+              label: "Attack Strength",
+              content: ["5-10 (♡ × 2.5-5)"],
+            },
+            {
+              label: "Spawn",
+              content: [
+                '<a href="https://minecraft.wiki/w/Cold_Ocean" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Cold Ocean</a>',
+                '<a href="https://minecraft.wiki/w/Lukewarm_Ocean" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Lukewarm Ocean</a>',
+                '<a href="https://minecraft.wiki/w/Deep_Lukewarm_Ocean" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Deep Lukewarm Ocean</a>',
+                '<a href="https://minecraft.wiki/w/Ocean" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Ocean</a>',
+                '<a href="https://minecraft.wiki/w/Deep_Ocean" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Deep Ocean</a>',
+                '<a href="https://minecraft.wiki/w/Frozen_Ocean" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Frozen Ocean</a>',
+                '<a href="https://minecraft.wiki/w/Warm_Ocean" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Warm Ocean</a>',
+              ],
+              isHtml: true,
+            },
+            {
+              label: "Useable Items",
+              content: [
+                '<a href="https://minecraft.wiki/w/Raw_Cod" class="text-blue-600 hover:underline">Raw Cod</a>',
+                '<a href="https://minecraft.wiki/w/Raw_Salmon" class="text-blue-600 hover:underline">Raw Salmon</a>',
+                '<a href="https://minecraft.wiki/w/Cooked_Cod" class="text-blue-600 hover:underline">Cooked Cod</a>',
+                '<a href="https://minecraft.wiki/w/Cooked_Salmon" class="text-blue-600 hover:underline">Cooked Salmon</a>',
+                '<a href="https://minecraft.wiki/w/Tropical_Fish_(item)" class="text-blue-600 hover:underline">Tropical Fish</a>',
+                '<a href="https://minecraft.wiki/w/Bucket_of_Cod" class="text-blue-600 hover:underline">Bucket of Cod</a>',
+                '<a href="https://minecraft.wiki/w/Bucket_of_Salmon" class="text-blue-600 hover:underline">Bucket of Salmon</a>',
+                '<a href="https://minecraft.wiki/w/Bucket_of_Tropical_Fish" class="text-blue-600 hover:underline">Bucket of Tropical Fish</a>',
+                '<a href="https://minecraft.wiki/w/Lead" class="text-blue-600 hover:underline">Lead</a>',
+              ],
+              isHtml: true,
+            },
+          ]}
+        />
+      </div>
+    </div>
+  </div>
+
+  <Footer slot="footer" />
+</WikiLayout>

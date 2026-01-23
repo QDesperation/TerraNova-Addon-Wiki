@@ -1,0 +1,100 @@
+---
+import WikiLayout from "../../layout/wiki.astro";
+import Navbar from "../../components/Navbar.astro";
+import doedicurusIcon from "../../assets/mobs/doedicurus/doedicurusIcon.png";
+import Footer from "../../components/Footer.astro";
+import TableOfContents from "../../components/TableOfContents.astro";
+import InfoBox from "../../components/InfoBox.astro";
+import MobIcon from "../../components/MobIcon.astro";
+
+const baseUrl = import.meta.env.BASE_URL;
+---
+
+<WikiLayout
+  content={{
+    title: "Doedicurus - TerraNova: Minecraft Addon Wiki",
+    description: "Learn about the Doedicurus mob in the TerraNova Minecraft addon.",
+  }}
+>
+  <Navbar slot="header" />
+  <div class="mx-auto max-w-6xl px-4 py-8">
+    <h1 class="mb-6 text-4xl font-bold">Doedicurus</h1>
+    <div class="flex flex-col-reverse gap-8 md:flex-row">
+      <!-- Main Content -->
+      <div class="flex-1">
+        <p class="mb-6 text-base leading-relaxed">
+          A passive armored mammal found in various biomes.
+        </p>
+
+        <TableOfContents
+          items={[
+            { label: "Health Points", id: "health-points" },
+            { label: "Behaviour", id: "behaviour" },
+            { label: "Mob Type", id: "mob-type" },
+            { label: "Knockback Resistance", id: "knockback-resistance" },
+            { label: "Spawn", id: "spawn" },
+            { label: "Useable Items", id: "useable-items" },
+          ]}
+        />
+        
+        <div class="mt-8">
+          <!-- Main content sections can go here -->
+        </div>
+      </div>
+
+      <div class="md:w-80">
+        <MobIcon src={doedicurusIcon} alt="Doedicurus Icon" />
+
+        <InfoBox
+          title="Doedicurus"
+          sections={[
+            {
+              label: "Health Points",
+              content: ["50-100 (♡ × 25-50)"],
+            },
+            {
+              label: "Behaviour",
+              content: ["Passive"],
+            },
+            {
+              label: "Mob Type",
+              content: '<a href="https://minecraft.wiki/w/Animal" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Animal</a>',
+              isHtml: true,
+            },
+            {
+              label: "Knockback Resistance",
+              content: ["Baby: 50%", "Adult: 100%"],
+            },
+            {
+              label: "Spawn",
+              content: [
+                '<a href="https://minecraft.wiki/w/Eroded_Badlands" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Eroded Badlands</a>',
+                '<a href="https://minecraft.wiki/w/Old_Growth_Birch_Forest" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Old Growth Birch Forest</a>',
+                '<a href="https://minecraft.wiki/w/Old_Growth_Pine_Taiga" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Old Growth Pine Taiga</a>',
+                '<a href="https://minecraft.wiki/w/Old_Growth_Spruce_Taiga" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Old Growth Spruce Taiga</a>',
+                '<a href="https://minecraft.wiki/w/Savanna_Plateau" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Savanna Plateau</a>',
+                '<a href="https://minecraft.wiki/w/Sparse_Jungle" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Sparse Jungle</a>',
+                '<a href="https://minecraft.wiki/w/Swamp" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Swamp</a>',
+              ],
+              isHtml: true,
+            },
+            {
+              label: "Useable Items",
+              content: [
+                '<a href="https://minecraft.wiki/w/Hay_Bale" class="text-blue-600 hover:underline">Hay Bale</a>',
+                "Straw",
+                "Straw Bale",
+                '<a href="https://minecraft.wiki/w/Wheat" class="text-blue-600 hover:underline">Wheat</a>',
+                '<a href="https://minecraft.wiki/w/Lead" class="text-blue-600 hover:underline">Lead</a>',
+                '<a href="https://minecraft.wiki/w/Shears" class="text-blue-600 hover:underline">Shears</a>',
+              ],
+              isHtml: true,
+            },
+          ]}
+        />
+      </div>
+    </div>
+  </div>
+
+  <Footer slot="footer" />
+</WikiLayout>

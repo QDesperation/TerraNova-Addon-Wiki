@@ -1,6 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap");
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+}
+
 .merriweather-light {
   font-family: "Merriweather", serif;
   font-optical-sizing: auto;
@@ -66,7 +70,7 @@
 }
 
 #hero {
-  background-image: url(var(--base-url)/banner.png);
+  background-image: url("var(--base-url)/banner.png");
   background-color: #212121;
   background-size: cover;
   background-position: center;

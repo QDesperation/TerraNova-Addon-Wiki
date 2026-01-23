@@ -1,0 +1,61 @@
+---
+interface Item {
+  label: string;
+  id: string;
+}
+
+interface Props {
+  items: Item[];
+}
+
+const { items } = Astro.props as Props;
+---
+
+<div class="mb-8 w-[90%] mx-auto md:mx-0 md:w-auto max-w-md overflow-hidden rounded outline-2 outline-[#E8E1D1] ">
+  <button
+    id="toc-toggle"
+    class="flex w-full items-center justify-between bg-[#E6DFD2] p-4"
+  >
+    <h2 class="font-semibold text-xl">Contents</h2>
+    <span id="toc-icon" class="text-xl">−</span>
+  </button>
+
+  <div
+    id="toc-content"
+    class="bg-[#E6DFD2] p-4"
+  >
+    <ul class="space-y-1 text-sm">
+      {
+        items.map((item) => (
+          <li>
+            <a
+              href={`#${item.id}`}
+              class="text-blue-600 hover:underline"
+            >
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</div>
+
+<script>
+  const tocToggle = document.getElementById("toc-toggle");
+  const tocContent = document.getElementById("toc-content");
+  const tocIcon = document.getElementById("toc-icon");
+
+  if (tocToggle && tocContent && tocIcon) {
+    tocToggle.addEventListener("click", () => {
+      const isHidden = tocContent.classList.contains("hidden");
+      if (isHidden) {
+        tocContent.classList.remove("hidden");
+        tocIcon.textContent = "−";
+      } else {
+        tocContent.classList.add("hidden");
+        tocIcon.textContent = "+";
+      }
+    });
+  }
+</script>

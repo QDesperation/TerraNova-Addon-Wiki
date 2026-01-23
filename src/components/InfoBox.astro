@@ -1,0 +1,45 @@
+---
+interface Section {
+  label: string;
+  content: string | string[];
+  isHtml?: boolean;
+}
+
+interface Props {
+  title: string;
+  sections: Section[];
+}
+
+const { title, sections } = Astro.props as Props;
+---
+
+<div class="mb-6 rounded-lg border-2 border-[#C4BDB0] bg-[#F0ECDF] p-4">
+  <h2 class="mb-4 border-b-2 border-[#C4BDB0] pb-2 text-center font-bold text-lg">
+    {title}
+  </h2>
+
+  <div class="space-y-4">
+    {
+      sections.map((section) => (
+        <div>
+          <p class="mb-1 font-semibold text-sm text-gray-700">{section.label}</p>
+          {Array.isArray(section.content) ? (
+            <ul class="ml-2 space-y-1 border-l-2 border-[#C4BDB0] pl-2 text-sm">
+              {section.content.map((item) => 
+                section.isHtml ? (
+                  <li set:html={item} />
+                ) : (
+                  <li>{item}</li>
+                )
+              )}
+            </ul>
+          ) : section.isHtml ? (
+            <p class="text-sm" set:html={section.content} />
+          ) : (
+            <p class="text-sm">{section.content}</p>
+          )}
+        </div>
+      ))
+    }
+  </div>
+</div>

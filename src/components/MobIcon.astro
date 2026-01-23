@@ -1,0 +1,19 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  src: ImageMetadata;
+  alt: string;
+  bgColor?: string;
+}
+
+const { src, alt, bgColor = "#E8E1D1" } = Astro.props as Props;
+---
+
+<div class="mb-6 flex justify-center rounded-lg overflow-hidden" style={`background-color: ${bgColor};`}>
+  <img 
+    src={src.src} 
+    alt={alt} 
+    class="h-64 w-full object-contain p-2"
+  />
+</div>

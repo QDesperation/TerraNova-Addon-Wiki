@@ -6,9 +6,12 @@ import weakenedDoe from "../../assets/mobs/deer/weakenedDoe.png";
 import fawn from "../../assets/mobs/deer/fawn.png";
 import stag from "../../assets/mobs/deer/stag.png";
 import weakenedStag from "../../assets/mobs/deer/weakenedStag.png";
-import { Image } from "astro:assets";
+import deerIcon from "../../assets/mobs/deer/deerIcon.png";
 import ImageCarousel from "../../components/ImageCarousel.astro";
 import Footer from "../../components/Footer.astro";
+import TableOfContents from "../../components/TableOfContents.astro";
+import InfoBox from "../../components/InfoBox.astro";
+import MobIcon from "../../components/MobIcon.astro";
 
 const baseUrl = import.meta.env.BASE_URL;
 ---
@@ -21,39 +24,129 @@ const baseUrl = import.meta.env.BASE_URL;
 >
   <Navbar slot="header" />
   <div class="mx-auto max-w-6xl px-4 py-8">
-    <h1 class="mb-2 text-4xl font-bold">Deer</h1>
-    <p class="mb-4">
-      And other types of deers such as fawns and stags.
-    </p>
-    <div class="mx-auto max-w-2xl">
-      <ImageCarousel
-        items={[
-          {
-            src: doe.src,
-            alt: "Doe",
-          },
-          {
-            src: weakenedDoe.src,
-            alt: "Weakened Doe",
-          },
-          {
-            src: fawn.src,
-            alt: "Fawn",
-          },
-          {
-            src: stag.src,
-            alt: "Stag",
-          },
-          {
-            src: weakenedStag.src,
-            alt: "Weakened Stag",
-          },
-        ]}
-      />    
+    <h1 class="mb-6 text-4xl font-bold">Deer</h1>
+    <div class="flex flex-col-reverse gap-8 md:flex-row">
+      <!-- Main Content -->
+      <div class="flex-1">
+        <p class="mb-6 text-base leading-relaxed">
+          And other types of deers such as fawns and stags.
+        </p>
 
+        <TableOfContents
+          items={[
+            { label: "Health Points", id: "health-points" },
+            { label: "Behaviour", id: "behaviour" },
+            { label: "Mob Type", id: "mob-type" },
+            { label: "Attack Strength", id: "attack-strength" },
+            { label: "Knockback Resistance", id: "knockback-resistance" },
+            { label: "Spawn", id: "spawn" },
+            { label: "Useable Items", id: "useable-items" },
+          ]}
+        />
+        
+        <div class="mt-8">
+            <!-- Main stuff -->
+        </div>
+      </div>
+
+      <div class="md:w-80">
+        <MobIcon src={deerIcon} alt="Deer Icon" />
+        <div class="mb-6">
+          <ImageCarousel
+            items={[
+              {
+                src: doe.src,
+                alt: "Doe",
+              },
+              {
+                src: weakenedDoe.src,
+                alt: "Weakened Doe",
+              },
+              {
+                src: fawn.src,
+                alt: "Fawn",
+              },
+              {
+                src: stag.src,
+                alt: "Stag",
+              },
+              {
+                src: weakenedStag.src,
+                alt: "Weakened Stag",
+              },
+            ]}
+          />
+        </div>
+
+        <!-- InfoBox -->
+        <InfoBox
+          title="Deer"
+          sections={[
+            {
+              label: "Health Points",
+              content: ["Baby: 16 (♡ × 8)", "Doe: 16 (♡ × 8)", "Stag: 32 (♡ × 16)"],
+            },
+            {
+              label: "Behaviour",
+              content: ["Neutral"],
+            },
+            {
+              label: "Mob Type",
+              content: ['<a href="https://minecraft.wiki/w/Animal" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Animal</a>'],
+              isHtml: true,
+            },
+            {
+              label: "Attack Strength",
+              content: [
+                "No Antlers: 2-4 (♡ × 1-2)",
+                "One Antler: 3-5 (♡ × 1.5-2.5)",
+                "Two Antlers: 4-7 (♡ × 2-3.5)",
+              ],
+            },
+            {
+              label: "Knockback Resistance",
+              content: ["Baby: 0%", "Doe: 0%", "Stag: 50%"],
+            },
+            {
+              label: "Spawn",
+              content: [
+                '<a href="https://minecraft.wiki/w/Birch_Forest" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Birch Forest</a>',
+                "Coniferous Forest",
+                "Deciduous Forest",
+                '<a href="https://minecraft.wiki/w/Flower_Forest" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Flower Forest</a>',
+                '<a href="https://minecraft.wiki/w/Forest" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Forest</a>',
+                '<a href="https://minecraft.wiki/w/Old_Growth_Birch_Forest" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Old Growth Birch Forest</a>',
+                '<a href="https://minecraft.wiki/w/Old_Growth_Pine_Taiga" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Old Growth Pine Taiga</a>',
+                '<a href="https://minecraft.wiki/w/Old_Growth_Spruce_Taiga" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Old Growth Spruce Taiga</a>',
+                '<a href="https://minecraft.wiki/w/Roofed_Forest" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Roofed Forest</a>',
+                '<a href="https://minecraft.wiki/w/Snowy_Taiga" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Snowy Taiga</a>',
+                '<a href="https://minecraft.wiki/w/Taiga" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Taiga</a>',
+                "Velanidia Forest",
+              ],
+              isHtml: true,
+            },
+            {
+              label: "Useable Items",
+              content: [
+                '<a href="https://minecraft.wiki/w/Beetroot" class="text-blue-600 hover:underline">Beetroot</a>',
+                '<a href="https://minecraft.wiki/w/Carrot" class="text-blue-600 hover:underline">Carrot</a>',
+                "Fibre",
+                '<a href="https://minecraft.wiki/w/Glow_Berries" class="text-blue-600 hover:underline">Glow Berries</a>',
+                '<a href="https://minecraft.wiki/w/Potato" class="text-blue-600 hover:underline">Potato</a>',
+                '<a href="https://minecraft.wiki/w/Short_Grass" class="text-blue-600 hover:underline">Short Grass</a>',
+                "Straw",
+                '<a href="https://minecraft.wiki/w/Sweet_Berries" class="text-blue-600 hover:underline">Sweet Berries</a>',
+                '<a href="https://minecraft.wiki/w/Tall_Grass" class="text-blue-600 hover:underline">Tall Grass</a>',
+                '<a href="https://minecraft.wiki/w/Wheat" class="text-blue-600 hover:underline">Wheat</a>',
+                "Wild Flax",
+                '<a href="https://minecraft.wiki/w/Lead" class="text-blue-600 hover:underline">Lead</a>',
+              ],
+              isHtml: true,
+            },
+          ]}
+        />
+      </div>
     </div>
-
-
   </div>
 
   <Footer slot="footer" />
