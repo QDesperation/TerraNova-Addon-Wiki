@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
+import cloudflare from "@astrojs/cloudflare";
 
 import mdx from "@astrojs/mdx";
 
@@ -10,12 +11,15 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
 
-  site: 'https://qdesperation.github.io/',
-  base: '/TerraNova-Addon-Wiki',
+  site: 'https://terranova-wiki.pages.dev',
+  base: '',
 
   devToolbar: {
     enabled: false
   },
+  output: "server",
+  adapter: cloudflare({ mode: "pages" }),
 
-  integrations: [mdx()]
+  integrations: [mdx()],
+  imageService: "compile",
 });

@@ -70,7 +70,7 @@ html {
 }
 
 #hero {
-  background-image: url("var(--base-url)/banner.png");
+  background-image: url(banner.png);
   background-color: #212121;
   background-size: cover;
   background-position: center;
