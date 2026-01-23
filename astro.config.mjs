@@ -11,7 +11,7 @@ export default defineConfig({
   },
 
   site: 'https://qdesperation.github.io/',
-  base: '/TerraNova-Addon-Wiki/',
+  base: '/TerraNova-Addon-Wiki',
 
   devToolbar: {
     enabled: false
